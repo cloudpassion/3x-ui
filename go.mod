@@ -103,4 +103,4 @@ require (
 
 
 replace github.com/xtls/xray-core v1.260206.0 => ../Xray-core
-replace github.com/xtls/reality v0.0.0-20251116175510-cd53f7d50237 => ../REALITY-xcore
+replace github.com/xtls/reality v0.0.0-20251116175510-cd53f7d50237 => ../REALITY
