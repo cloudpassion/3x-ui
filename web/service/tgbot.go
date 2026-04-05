@@ -2349,9 +2349,9 @@ func (t *Tgbot) buildSubscriptionURLs(email string) (string, string, error) {
 	subKeyFile, _ := t.settingService.GetSubKeyFile()
 	subCertFile, _ := t.settingService.GetSubCertFile()
 
-	tls := (subKeyFile != "" && subCertFile != "")
+	is_tls := (subKeyFile != "" && subCertFile != "")
 	scheme := "http"
-	if tls {
+	if is_tls {
 		scheme = "https"
 	}
 
@@ -2368,7 +2368,7 @@ func (t *Tgbot) buildSubscriptionURLs(email string) (string, string, error) {
 	}
 
 	host := subDomain
-	if (subPort == 443 && tls) || (subPort == 80 && !tls) {
+	if (subPort == 443 && is_tls) || (subPort == 80 && !is_tls) {
 		// standard ports: no port in host
 	} else {
 		host = fmt.Sprintf("%s:%d", subDomain, subPort)
