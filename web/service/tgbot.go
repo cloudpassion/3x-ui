@@ -2444,14 +2444,14 @@ func (t *Tgbot) sendClientIndividualLinks(chatId int64, email string) {
 	// Build the HTML sub page URL; we'll call it with header Accept to get raw content
 	subURL, _, err := t.buildSubscriptionURLs(email)
 	if err != nil {
-		t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error()+' chat_id: '+strconv.FormatInt(int64(chatId), 10))
+		t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error()+" chat_id: "+strconv.FormatInt(int64(chatId), 10))
 		return
 	}
 
 	// Try to fetch raw subscription links. Prefer plain text response.
 	req, err := http.NewRequest("GET", subURL, nil)
 	if err != nil {
-		t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error()+' chat_id: '+strconv.FormatInt(int64(chatId), 10))
+		t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error()+" chat_id: "+strconv.FormatInt(int64(chatId), 10))
 		return
 	}
 	// Force plain text to avoid HTML page; controller respects Accept header
