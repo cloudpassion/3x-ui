@@ -196,7 +196,7 @@ func (t *Tgbot) Start(i18nFS embed.FS) error {
 			MaxIdleConnsPerHost: 10,
 			IdleConnTimeout:     30 * time.Second,
 			DisableKeepAlives:   false,
-			TLSClientConfig: &tls.Config{InsecureSkipVerify: true}
+			TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 		},
 	}
 
