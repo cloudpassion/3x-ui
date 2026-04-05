@@ -2444,14 +2444,14 @@ func (t *Tgbot) sendClientIndividualLinks(chatId int64, email string) {
 	// Build the HTML sub page URL; we'll call it with header Accept to get raw content
 	subURL, _, err := t.buildSubscriptionURLs(email)
 	if err != nil {
-		t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error()+' chat_id:'+strconv.Itoa(chatId))
+		t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error()+' chat_id:'+strconv.FormatInt(int64(chatId), 10))
 		return
 	}
 
 	// Try to fetch raw subscription links. Prefer plain text response.
 	req, err := http.NewRequest("GET", subURL, nil)
 	if err != nil {
-		t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error()+' chat_id:'+strconv.Itoa(chatId))
+		t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error()+' chat_id:'+strconv.FormatInt(int64(chatId), 10))
 		return
 	}
 	// Force plain text to avoid HTML page; controller respects Accept header
@@ -2464,14 +2464,14 @@ func (t *Tgbot) sendClientIndividualLinks(chatId int64, email string) {
 
 	resp, err := optimizedHTTPClient.Do(req)
 	if err != nil {
-		t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error()+' chat_id:'+strconv.Itoa(chatId))
+		t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error()+' chat_id:'+strconv.FormatInt(int64(chatId), 10))
 		return
 	}
 	defer resp.Body.Close()
 
 	bodyBytes, err := io.ReadAll(resp.Body)
 	if err != nil {
-		t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error()+' chat_id:'+strconv.Itoa(chatId))
+		t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error()+' chat_id:'+strconv.FormatInt(int64(chatId), 10))
 		return
 	}
 
@@ -2525,7 +2525,7 @@ func (t *Tgbot) sendClientIndividualLinks(chatId int64, email string) {
 func (t *Tgbot) sendClientQRLinks(chatId int64, email string) {
 	subURL, subJsonURL, err := t.buildSubscriptionURLs(email)
 	if err != nil {
-		t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error()+' chat_id:'+strconv.Itoa(chatId))
+		t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error()+' chat_id:'+strconv.FormatInt(int64(chatId), 10))
 		return
 	}
 
@@ -2548,7 +2548,7 @@ func (t *Tgbot) sendClientQRLinks(chatId int64, email string) {
 		)
 		_, _ = bot.SendDocument(context.Background(), document)
 	} else {
-		t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error()+' chat_id:'+strconv.Itoa(chatId))
+		t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error()+' chat_id:'+strconv.FormatInt(int64(chatId), 10))
 	}
 
 	// Send JSON URL QR (filename: subjson.png) when available
@@ -2560,7 +2560,7 @@ func (t *Tgbot) sendClientQRLinks(chatId int64, email string) {
 			)
 			_, _ = bot.SendDocument(context.Background(), document)
 		} else {
-			t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error()+' chat_id:'+strconv.Itoa(chatId))
+			t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error()+' chat_id:'+strconv.FormatInt(int64(chatId), 10))
 		}
 	}
 
