@@ -11,6 +11,7 @@ import (
 	"html"
 	"io"
 	"math/big"
+	"crypto/tls"
 	"net"
 	"net/http"
 	"net/url"
@@ -195,6 +196,7 @@ func (t *Tgbot) Start(i18nFS embed.FS) error {
 			MaxIdleConnsPerHost: 10,
 			IdleConnTimeout:     30 * time.Second,
 			DisableKeepAlives:   false,
+			TLSClientConfig: &tls.Config{InsecureSkipVerify: true}
 		},
 	}
 
@@ -2340,7 +2342,7 @@ func (t *Tgbot) buildSubscriptionURLs(email string) (string, string, error) {
 	subURI, _ := t.settingService.GetSubURI()
 	subJsonURI, _ := t.settingService.GetSubJsonURI()
 	subDomain, _ := t.settingService.GetSubDomain()
-	subPort, _ := t.settingService.GetSubPort()
+	subPort, _ := 443
 	subPath, _ := t.settingService.GetSubPath()
 	subJsonPath, _ := t.settingService.GetSubJsonPath()
 	subJsonEnable, _ := t.settingService.GetSubJsonEnable()
