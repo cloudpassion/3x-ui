@@ -2342,7 +2342,7 @@ func (t *Tgbot) buildSubscriptionURLs(email string) (string, string, error) {
 	subURI, _ := t.settingService.GetSubURI()
 	subJsonURI, _ := t.settingService.GetSubJsonURI()
 	subDomain, _ := t.settingService.GetSubDomain()
-	subPort, _ := 443
+	subPort := 443
 	subPath, _ := t.settingService.GetSubPath()
 	subJsonPath, _ := t.settingService.GetSubJsonPath()
 	subJsonEnable, _ := t.settingService.GetSubJsonEnable()
