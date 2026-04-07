@@ -11,6 +11,7 @@ import (
 	"html"
 	"io"
 	"math/big"
+	"crypto/tls"
 	"net"
 	"net/http"
 	"net/url"
@@ -195,6 +196,7 @@ func (t *Tgbot) Start(i18nFS embed.FS) error {
 			MaxIdleConnsPerHost: 10,
 			IdleConnTimeout:     30 * time.Second,
 			DisableKeepAlives:   false,
+			TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 		},
 	}
 
@@ -1646,7 +1648,7 @@ func (t *Tgbot) answerCallback(callbackQuery *telego.CallbackQuery, isAdmin bool
 		traffics, err := t.inboundService.GetClientTrafficTgBot(tgUserID)
 		if err != nil {
 			// fallback to message
-			t.SendMsgToTgbot(chatId, t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error())
+			t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error())
 			return
 		}
 		if len(traffics) == 0 {
@@ -1668,7 +1670,7 @@ func (t *Tgbot) answerCallback(callbackQuery *telego.CallbackQuery, isAdmin bool
 		tgUserID := callbackQuery.From.ID
 		traffics, err := t.inboundService.GetClientTrafficTgBot(tgUserID)
 		if err != nil {
-			t.SendMsgToTgbot(chatId, t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error())
+			t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error())
 			return
 		}
 		if len(traffics) == 0 {
@@ -1926,6 +1928,8 @@ func (t *Tgbot) answerCallback(callbackQuery *telego.CallbackQuery, isAdmin bool
 		} else {
 			t.deleteMessageTgBot(chatId, callbackQuery.Message.GetMessageID())
 			t.SendMsgToTgbot(chatId, t.I18nBot("tgbot.answers.successfulOperation"), tu.ReplyKeyboardRemove())
+			t.sendClientIndividualLinks(chatId, client_Email)
+			t.sendClientQRLinks(chatId, client_Email)
 		}
 	case "add_client_submit_enable":
 		client_Enable = true
@@ -1936,6 +1940,8 @@ func (t *Tgbot) answerCallback(callbackQuery *telego.CallbackQuery, isAdmin bool
 		} else {
 			t.deleteMessageTgBot(chatId, callbackQuery.Message.GetMessageID())
 			t.SendMsgToTgbot(chatId, t.I18nBot("tgbot.answers.successfulOperation"), tu.ReplyKeyboardRemove())
+			t.sendClientIndividualLinks(chatId, client_Email)
+			t.sendClientQRLinks(chatId, client_Email)
 		}
 	case "reset_all_traffics_cancel":
 		t.deleteMessageTgBot(chatId, callbackQuery.Message.GetMessageID())
@@ -1954,7 +1960,7 @@ func (t *Tgbot) answerCallback(callbackQuery *telego.CallbackQuery, isAdmin bool
 		t.deleteMessageTgBot(chatId, callbackQuery.Message.GetMessageID())
 		emails, err := t.inboundService.getAllEmails()
 		if err != nil {
-			t.SendMsgToTgbot(chatId, t.I18nBot("tgbot.answers.errorOperation"), tu.ReplyKeyboardRemove())
+			t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation"), tu.ReplyKeyboardRemove())
 			return
 		}
 
@@ -1975,12 +1981,12 @@ func (t *Tgbot) answerCallback(callbackQuery *telego.CallbackQuery, isAdmin bool
 		emails, err := t.inboundService.getAllEmails()
 
 		if err != nil {
-			t.SendMsgToTgbot(chatId, t.I18nBot("tgbot.answers.errorOperation"), tu.ReplyKeyboardRemove())
+			t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation"), tu.ReplyKeyboardRemove())
 			return
 		}
 		valid_emails, extra_emails, err := t.inboundService.FilterAndSortClientEmails(emails)
 		if err != nil {
-			t.SendMsgToTgbot(chatId, t.I18nBot("tgbot.answers.errorOperation"), tu.ReplyKeyboardRemove())
+			t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation"), tu.ReplyKeyboardRemove())
 			return
 		}
 
@@ -2336,16 +2342,16 @@ func (t *Tgbot) buildSubscriptionURLs(email string) (string, string, error) {
 	subURI, _ := t.settingService.GetSubURI()
 	subJsonURI, _ := t.settingService.GetSubJsonURI()
 	subDomain, _ := t.settingService.GetSubDomain()
-	subPort, _ := t.settingService.GetSubPort()
+	subPort := 443
 	subPath, _ := t.settingService.GetSubPath()
 	subJsonPath, _ := t.settingService.GetSubJsonPath()
 	subJsonEnable, _ := t.settingService.GetSubJsonEnable()
 	subKeyFile, _ := t.settingService.GetSubKeyFile()
 	subCertFile, _ := t.settingService.GetSubCertFile()
 
-	tls := (subKeyFile != "" && subCertFile != "")
+	is_tls := (subKeyFile != "" && subCertFile != "")
 	scheme := "http"
-	if tls {
+	if is_tls {
 		scheme = "https"
 	}
 
@@ -2362,7 +2368,7 @@ func (t *Tgbot) buildSubscriptionURLs(email string) (string, string, error) {
 	}
 
 	host := subDomain
-	if (subPort == 443 && tls) || (subPort == 80 && !tls) {
+	if (subPort == 443 && is_tls) || (subPort == 80 && !is_tls) {
 		// standard ports: no port in host
 	} else {
 		host = fmt.Sprintf("%s:%d", subDomain, subPort)
@@ -2415,7 +2421,7 @@ func (t *Tgbot) buildSubscriptionURLs(email string) (string, string, error) {
 func (t *Tgbot) sendClientSubLinks(chatId int64, email string) {
 	subURL, subJsonURL, err := t.buildSubscriptionURLs(email)
 	if err != nil {
-		t.SendMsgToTgbot(chatId, t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error())
+		t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error())
 		return
 	}
 	msg := "Subscription URL:\r\n<code>" + subURL + "</code>"
@@ -2438,14 +2444,14 @@ func (t *Tgbot) sendClientIndividualLinks(chatId int64, email string) {
 	// Build the HTML sub page URL; we'll call it with header Accept to get raw content
 	subURL, _, err := t.buildSubscriptionURLs(email)
 	if err != nil {
-		t.SendMsgToTgbot(chatId, t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error())
+		t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error()+" chat_id: "+strconv.FormatInt(int64(chatId), 10))
 		return
 	}
 
 	// Try to fetch raw subscription links. Prefer plain text response.
 	req, err := http.NewRequest("GET", subURL, nil)
 	if err != nil {
-		t.SendMsgToTgbot(chatId, t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error())
+		t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error()+" chat_id: "+strconv.FormatInt(int64(chatId), 10))
 		return
 	}
 	// Force plain text to avoid HTML page; controller respects Accept header
@@ -2458,14 +2464,14 @@ func (t *Tgbot) sendClientIndividualLinks(chatId int64, email string) {
 
 	resp, err := optimizedHTTPClient.Do(req)
 	if err != nil {
-		t.SendMsgToTgbot(chatId, t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error())
+		t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error()+" chat_id: "+strconv.FormatInt(int64(chatId), 10))
 		return
 	}
 	defer resp.Body.Close()
 
 	bodyBytes, err := io.ReadAll(resp.Body)
 	if err != nil {
-		t.SendMsgToTgbot(chatId, t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error())
+		t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error()+" chat_id: "+strconv.FormatInt(int64(chatId), 10))
 		return
 	}
 
@@ -2519,7 +2525,7 @@ func (t *Tgbot) sendClientIndividualLinks(chatId int64, email string) {
 func (t *Tgbot) sendClientQRLinks(chatId int64, email string) {
 	subURL, subJsonURL, err := t.buildSubscriptionURLs(email)
 	if err != nil {
-		t.SendMsgToTgbot(chatId, t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error())
+		t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error()+" chat_id: "+strconv.FormatInt(int64(chatId), 10))
 		return
 	}
 
@@ -2542,7 +2548,7 @@ func (t *Tgbot) sendClientQRLinks(chatId int64, email string) {
 		)
 		_, _ = bot.SendDocument(context.Background(), document)
 	} else {
-		t.SendMsgToTgbot(chatId, t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error())
+		t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error()+" chat_id: "+strconv.FormatInt(int64(chatId), 10))
 	}
 
 	// Send JSON URL QR (filename: subjson.png) when available
@@ -2554,7 +2560,7 @@ func (t *Tgbot) sendClientQRLinks(chatId int64, email string) {
 			)
 			_, _ = bot.SendDocument(context.Background(), document)
 		} else {
-			t.SendMsgToTgbot(chatId, t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error())
+			t.SendMsgToTgbot(adminIds[0], t.I18nBot("tgbot.answers.errorOperation")+"\r\n"+err.Error()+" chat_id: "+strconv.FormatInt(int64(chatId), 10))
 		}
 	}
 

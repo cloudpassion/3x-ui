@@ -317,7 +317,8 @@ func (s *SubJsonService) genVnext(inbound *model.Inbound, streamSettings json_ut
 func (s *SubJsonService) genVless(inbound *model.Inbound, streamSettings json_util.RawMessage, client model.Client) json_util.RawMessage {
 	outbound := Outbound{}
 	outbound.Protocol = string(inbound.Protocol)
-	outbound.Tag = "proxy"
+	//outbound.Tag = "proxy"
+	outbound.Tag = client.Email
 	if s.mux != "" {
 		outbound.Mux = json_util.RawMessage(s.mux)
 	}
@@ -326,6 +327,8 @@ func (s *SubJsonService) genVless(inbound *model.Inbound, streamSettings json_ut
 	settings["address"] = inbound.Listen
 	settings["port"] = inbound.Port
 	settings["id"] = client.ID
+	settings["uuid"] = client.ID
+	
 	if client.Flow != "" {
 		settings["flow"] = client.Flow
 	}
@@ -335,6 +338,7 @@ func (s *SubJsonService) genVless(inbound *model.Inbound, streamSettings json_ut
 	json.Unmarshal([]byte(inbound.Settings), &inboundSettings)
 	if encryption, ok := inboundSettings["encryption"].(string); ok {
 		settings["encryption"] = encryption
+		settings["method"] = encryption
 	}
 
 	outbound.Settings = settings
@@ -372,10 +376,10 @@ func (s *SubJsonService) genServer(inbound *model.Inbound, streamSettings json_u
 	if s.mux != "" {
 		outbound.Mux = json_util.RawMessage(s.mux)
 	}
-	outbound.StreamSettings = streamSettings
 	outbound.Settings = map[string]any{
 		"servers": serverData,
-	}
+	}	
+	outbound.StreamSettings = streamSettings
 
 	result, _ := json.MarshalIndent(outbound, "", "  ")
 	return result
@@ -384,9 +388,9 @@ func (s *SubJsonService) genServer(inbound *model.Inbound, streamSettings json_u
 type Outbound struct {
 	Protocol       string               `json:"protocol"`
 	Tag            string               `json:"tag"`
+	Settings       map[string]any       `json:"settings,omitempty"`
 	StreamSettings json_util.RawMessage `json:"streamSettings"`
 	Mux            json_util.RawMessage `json:"mux,omitempty"`
-	Settings       map[string]any       `json:"settings,omitempty"`
 }
 
 type VnextSetting struct {

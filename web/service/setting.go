@@ -800,7 +800,8 @@ func (s *SettingService) GetDefaultSettings(host string) (any, error) {
 		if (subPort == 443 && subTLS) || (subPort == 80 && !subTLS) {
 			subURI += subDomain
 		} else {
-			subURI += fmt.Sprintf("%s:%d", subDomain, subPort)
+			subURI += subDomain
+			//subURI += fmt.Sprintf("%s:%d", subDomain, subPort)
 		}
 		if subEnable && result["subURI"].(string) == "" {
 			result["subURI"] = subURI + subPath
