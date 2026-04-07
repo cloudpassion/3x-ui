@@ -60,7 +60,7 @@ var defaultValueMap = map[string]string{
 	"subEnableRouting":            "true",
 	"subRoutingRules":             "",
 	"subListen":                   "",
-	"subPort":                     "443",
+	"subPort":                     "2096",
 	"subPath":                     "/sub/",
 	"subDomain":                   "",
 	"subCertFile":                 "",
