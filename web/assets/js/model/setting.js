@@ -35,7 +35,7 @@ class AllSetting {
         this.subEnableRouting = true;
         this.subRoutingRules = "";
         this.subListen = "";
-        this.subPort = 2096;
+        this.subPort = 443;
         this.subPath = "/sub/";
         this.subJsonPath = "/json/";
         this.subDomain = "";
