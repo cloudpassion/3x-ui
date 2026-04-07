@@ -798,7 +798,8 @@ func (s *SettingService) GetDefaultSettings(host string) (any, error) {
 			subURI = "http://"
 		}
 		if (subPort == 443 && subTLS) || (subPort == 80 && !subTLS) {
-			subURI += subDomain
+			//subURI += fmt.Sprintf("%s:%d", subDomain, subPort)
+			subURI += fmt.Sprintf("%s", subDomain)
 		} else {
 			subURI += subDomain
 			//subURI += fmt.Sprintf("%s:%d", subDomain, subPort)
