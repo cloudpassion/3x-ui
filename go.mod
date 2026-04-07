@@ -3,7 +3,7 @@ module github.com/cloudpassion/3x-ui
 go 1.26.0
 
 require (
-	github.com/cloudpassion/xray-core v0.0.0-00010101000000-000000000000
+	github.com/cloudpassion/xray-core v0.0.0-20260407134358-9d72b664588f
 	github.com/gin-contrib/gzip v1.2.5
 	github.com/gin-contrib/sessions v1.0.4
 	github.com/gin-gonic/gin v1.12.0
@@ -32,7 +32,6 @@ require (
 
 require (
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
-	github.com/cloudpassion/xray-core v0.0.0-20260407134358-9d72b664588f // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/redis/go-redis/v9 v9.18.0 // indirect
 )
