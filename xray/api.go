@@ -11,8 +11,8 @@ import (
 	"regexp"
 	"time"
 
-	"github.com/cloudpassion/3x-ui/v2/logger"
-	"github.com/cloudpassion/3x-ui/v2/util/common"
+	"github.com/cloudpassion/3x-ui/logger"
+	"github.com/cloudpassion/3x-ui/util/common"
 
 	"github.com/cloudpassion/xray-core/app/proxyman/command"
 	statsService "github.com/cloudpassion/xray-core/app/stats/command"

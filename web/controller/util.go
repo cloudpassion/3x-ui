@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/cloudpassion/3x-ui/v2/config"
-	"github.com/cloudpassion/3x-ui/v2/logger"
-	"github.com/cloudpassion/3x-ui/v2/web/entity"
+	"github.com/cloudpassion/3x-ui/config"
+	"github.com/cloudpassion/3x-ui/logger"
+	"github.com/cloudpassion/3x-ui/web/entity"
 
 	"github.com/gin-gonic/gin"
 )

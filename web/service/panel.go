@@ -5,7 +5,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/cloudpassion/3x-ui/v2/logger"
+	"github.com/cloudpassion/3x-ui/logger"
 )
 
 // PanelService provides business logic for panel management operations.

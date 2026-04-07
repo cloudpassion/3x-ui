@@ -4,8 +4,8 @@ import (
 	_ "embed"
 	"encoding/json"
 
-	"github.com/cloudpassion/3x-ui/v2/util/common"
-	"github.com/cloudpassion/3x-ui/v2/xray"
+	"github.com/cloudpassion/3x-ui/util/common"
+	"github.com/cloudpassion/3x-ui/xray"
 )
 
 // XraySettingService provides business logic for Xray configuration management.

@@ -3,10 +3,10 @@ package job
 import (
 	"encoding/json"
 
-	"github.com/cloudpassion/3x-ui/v2/logger"
-	"github.com/cloudpassion/3x-ui/v2/web/service"
-	"github.com/cloudpassion/3x-ui/v2/web/websocket"
-	"github.com/cloudpassion/3x-ui/v2/xray"
+	"github.com/cloudpassion/3x-ui/logger"
+	"github.com/cloudpassion/3x-ui/web/service"
+	"github.com/cloudpassion/3x-ui/web/websocket"
+	"github.com/cloudpassion/3x-ui/xray"
 
 	"github.com/valyala/fasthttp"
 )

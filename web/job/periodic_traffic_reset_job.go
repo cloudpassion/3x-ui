@@ -1,8 +1,8 @@
 package job
 
 import (
-	"github.com/cloudpassion/3x-ui/v2/logger"
-	"github.com/cloudpassion/3x-ui/v2/web/service"
+	"github.com/cloudpassion/3x-ui/logger"
+	"github.com/cloudpassion/3x-ui/web/service"
 )
 
 // Period represents the time period for traffic resets.

@@ -4,8 +4,8 @@ package model
 import (
 	"fmt"
 
-	"github.com/cloudpassion/3x-ui/v2/util/json_util"
-	"github.com/cloudpassion/3x-ui/v2/xray"
+	"github.com/cloudpassion/3x-ui/util/json_util"
+	"github.com/cloudpassion/3x-ui/xray"
 )
 
 // Protocol represents the protocol type for Xray inbounds.

@@ -5,7 +5,7 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/cloudpassion/3x-ui/v2/logger"
+	"github.com/cloudpassion/3x-ui/logger"
 )
 
 // NewLogWriter returns a new LogWriter for processing Xray log output.

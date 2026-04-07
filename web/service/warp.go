@@ -8,8 +8,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/cloudpassion/3x-ui/v2/logger"
-	"github.com/cloudpassion/3x-ui/v2/util/common"
+	"github.com/cloudpassion/3x-ui/logger"
+	"github.com/cloudpassion/3x-ui/util/common"
 )
 
 // WarpService provides business logic for Cloudflare WARP integration.

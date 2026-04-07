@@ -11,13 +11,13 @@ import (
 	"sync"
 	"time"
 
-	"github.com/cloudpassion/3x-ui/v2/config"
-	"github.com/cloudpassion/3x-ui/v2/database"
-	"github.com/cloudpassion/3x-ui/v2/database/model"
-	"github.com/cloudpassion/3x-ui/v2/logger"
-	"github.com/cloudpassion/3x-ui/v2/util/common"
-	"github.com/cloudpassion/3x-ui/v2/util/json_util"
-	"github.com/cloudpassion/3x-ui/v2/xray"
+	"github.com/cloudpassion/3x-ui/config"
+	"github.com/cloudpassion/3x-ui/database"
+	"github.com/cloudpassion/3x-ui/database/model"
+	"github.com/cloudpassion/3x-ui/logger"
+	"github.com/cloudpassion/3x-ui/util/common"
+	"github.com/cloudpassion/3x-ui/util/json_util"
+	"github.com/cloudpassion/3x-ui/xray"
 
 	"gorm.io/gorm"
 )

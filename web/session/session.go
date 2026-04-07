@@ -6,7 +6,7 @@ import (
 	"encoding/gob"
 	"net/http"
 
-	"github.com/cloudpassion/3x-ui/v2/database/model"
+	"github.com/cloudpassion/3x-ui/database/model"
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"

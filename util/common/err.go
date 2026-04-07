@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/cloudpassion/3x-ui/v2/logger"
+	"github.com/cloudpassion/3x-ui/logger"
 )
 
 // NewErrorf creates a new error with formatted message.

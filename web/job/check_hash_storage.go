@@ -1,7 +1,7 @@
 package job
 
 import (
-	"github.com/cloudpassion/3x-ui/v2/web/service"
+	"github.com/cloudpassion/3x-ui/web/service"
 )
 
 // CheckHashStorageJob periodically cleans up expired hash entries from the Telegram bot's hash storage.

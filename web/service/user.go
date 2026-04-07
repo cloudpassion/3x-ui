@@ -3,11 +3,11 @@ package service
 import (
 	"errors"
 
-	"github.com/cloudpassion/3x-ui/v2/database"
-	"github.com/cloudpassion/3x-ui/v2/database/model"
-	"github.com/cloudpassion/3x-ui/v2/logger"
-	"github.com/cloudpassion/3x-ui/v2/util/crypto"
-	ldaputil "github.com/cloudpassion/3x-ui/v2/util/ldap"
+	"github.com/cloudpassion/3x-ui/database"
+	"github.com/cloudpassion/3x-ui/database/model"
+	"github.com/cloudpassion/3x-ui/logger"
+	"github.com/cloudpassion/3x-ui/util/crypto"
+	ldaputil "github.com/cloudpassion/3x-ui/util/ldap"
 	"github.com/xlzd/gotp"
 	"gorm.io/gorm"
 )

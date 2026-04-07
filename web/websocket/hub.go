@@ -8,7 +8,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/cloudpassion/3x-ui/v2/logger"
+	"github.com/cloudpassion/3x-ui/logger"
 )
 
 // MessageType represents the type of WebSocket message

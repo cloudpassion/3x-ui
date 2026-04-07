@@ -13,9 +13,9 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/cloudpassion/3x-ui/v2/config"
-	"github.com/cloudpassion/3x-ui/v2/logger"
-	"github.com/cloudpassion/3x-ui/v2/util/common"
+	"github.com/cloudpassion/3x-ui/config"
+	"github.com/cloudpassion/3x-ui/logger"
+	"github.com/cloudpassion/3x-ui/util/common"
 )
 
 // GetBinaryName returns the Xray binary filename for the current OS and architecture.

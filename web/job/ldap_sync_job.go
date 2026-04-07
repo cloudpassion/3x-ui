@@ -5,10 +5,10 @@ import (
 
 	"strings"
 
-	"github.com/cloudpassion/3x-ui/v2/database/model"
-	"github.com/cloudpassion/3x-ui/v2/logger"
-	ldaputil "github.com/cloudpassion/3x-ui/v2/util/ldap"
-	"github.com/cloudpassion/3x-ui/v2/web/service"
+	"github.com/cloudpassion/3x-ui/database/model"
+	"github.com/cloudpassion/3x-ui/logger"
+	ldaputil "github.com/cloudpassion/3x-ui/util/ldap"
+	"github.com/cloudpassion/3x-ui/web/service"
 
 	"strconv"
 

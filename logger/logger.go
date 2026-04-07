@@ -9,7 +9,7 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/cloudpassion/3x-ui/v2/config"
+	"github.com/cloudpassion/3x-ui/config"
 	"github.com/op/go-logging"
 )
 

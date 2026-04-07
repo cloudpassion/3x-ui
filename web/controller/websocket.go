@@ -6,10 +6,10 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/cloudpassion/3x-ui/v2/logger"
-	"github.com/cloudpassion/3x-ui/v2/util/common"
-	"github.com/cloudpassion/3x-ui/v2/web/session"
-	"github.com/cloudpassion/3x-ui/v2/web/websocket"
+	"github.com/cloudpassion/3x-ui/logger"
+	"github.com/cloudpassion/3x-ui/util/common"
+	"github.com/cloudpassion/3x-ui/web/session"
+	"github.com/cloudpassion/3x-ui/web/websocket"
 
 	"github.com/gin-gonic/gin"
 	ws "github.com/gorilla/websocket"

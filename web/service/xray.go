@@ -6,8 +6,8 @@ import (
 	"runtime"
 	"sync"
 
-	"github.com/cloudpassion/3x-ui/v2/logger"
-	"github.com/cloudpassion/3x-ui/v2/xray"
+	"github.com/cloudpassion/3x-ui/logger"
+	"github.com/cloudpassion/3x-ui/xray"
 
 	"go.uber.org/atomic"
 )

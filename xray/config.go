@@ -3,7 +3,7 @@ package xray
 import (
 	"bytes"
 
-	"github.com/cloudpassion/3x-ui/v2/util/json_util"
+	"github.com/cloudpassion/3x-ui/util/json_util"
 )
 
 // Config represents the complete Xray configuration structure.

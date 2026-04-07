@@ -2,8 +2,8 @@
 package websocket
 
 import (
-	"github.com/cloudpassion/3x-ui/v2/logger"
-	"github.com/cloudpassion/3x-ui/v2/web/global"
+	"github.com/cloudpassion/3x-ui/logger"
+	"github.com/cloudpassion/3x-ui/web/global"
 )
 
 // GetHub returns the global WebSocket hub instance

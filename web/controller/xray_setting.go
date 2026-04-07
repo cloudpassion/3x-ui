@@ -3,8 +3,8 @@ package controller
 import (
 	"encoding/json"
 
-	"github.com/cloudpassion/3x-ui/v2/util/common"
-	"github.com/cloudpassion/3x-ui/v2/web/service"
+	"github.com/cloudpassion/3x-ui/util/common"
+	"github.com/cloudpassion/3x-ui/web/service"
 
 	"github.com/gin-gonic/gin"
 )

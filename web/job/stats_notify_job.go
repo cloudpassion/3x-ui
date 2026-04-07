@@ -1,7 +1,7 @@
 package job
 
 import (
-	"github.com/cloudpassion/3x-ui/v2/web/service"
+	"github.com/cloudpassion/3x-ui/web/service"
 )
 
 // LoginStatus represents the status of a login attempt.
