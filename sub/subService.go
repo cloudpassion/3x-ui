@@ -1113,7 +1113,7 @@ func (s *SubService) getBaseSchemeAndHost(requestScheme, requestHostWithPort str
 	}
 
 	// Get port and TLS settings
-	subPort, _ := 443
+	subPort := 443
 	subKeyFile, _ := s.settingService.GetSubKeyFile()
 	subCertFile, _ := s.settingService.GetSubCertFile()
 
