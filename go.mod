@@ -3,6 +3,7 @@ module github.com/cloudpassion/3x-ui
 go 1.26.0
 
 require (
+	github.com/cloudpassion/Xray-core v0.0.0-00010101000000-000000000000
 	github.com/gin-contrib/gzip v1.2.5
 	github.com/gin-contrib/sessions v1.0.4
 	github.com/gin-gonic/gin v1.12.0
@@ -20,7 +21,6 @@ require (
 	github.com/skip2/go-qrcode v0.0.0-20200617195104-da1b6568686e
 	github.com/valyala/fasthttp v1.69.0
 	github.com/xlzd/gotp v0.1.0
-	github.com/cloudpassion/xray-core main
 	go.uber.org/atomic v1.11.0
 	golang.org/x/crypto v0.48.0
 	golang.org/x/sys v0.41.0
@@ -31,6 +31,13 @@ require (
 )
 
 require (
+	github.com/cespare/xxhash/v2 v2.3.0 // indirect
+	github.com/cloudpassion/xray-core v0.0.0-20260407134358-9d72b664588f // indirect
+	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
+	github.com/redis/go-redis/v9 v9.18.0 // indirect
+)
+
+require (
 	github.com/Azure/go-ntlmssp v0.1.0 // indirect
 	github.com/andybalholm/brotli v1.2.0 // indirect
 	github.com/apernet/quic-go v0.57.2-0.20260111184307-eec823306178 // indirect
@@ -38,6 +45,7 @@ require (
 	github.com/bytedance/sonic v1.15.0 // indirect
 	github.com/bytedance/sonic/loader v0.5.0 // indirect
 	github.com/cloudflare/circl v1.6.3 // indirect
+	github.com/cloudpassion/reality v0.0.0-20260407095639-71a0afcf658d // indirect
 	github.com/cloudwego/base64x v0.1.6 // indirect
 	github.com/ebitengine/purego v0.10.0 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.13 // indirect
@@ -82,7 +90,6 @@ require (
 	github.com/valyala/fastjson v1.6.10 // indirect
 	github.com/vishvananda/netlink v1.3.1 // indirect
 	github.com/vishvananda/netns v0.0.5 // indirect
-	github.com/cloudpassion/reality main
 	github.com/yusufpapurcu/wmi v1.2.4 // indirect
 	go.mongodb.org/mongo-driver/v2 v2.5.0 // indirect
 	go4.org/netipx v0.0.0-20231129151722-fdeea329fbba // indirect
