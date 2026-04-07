@@ -106,4 +106,3 @@ require (
 replace github.com/cloudpassion/reality => ../REALITY
 
 replace github.com/cloudpassion/Xray-core => ../Xray-core
-
