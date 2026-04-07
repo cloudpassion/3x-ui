@@ -4,7 +4,7 @@ go 1.26.0
 
 require (
 	github.com/cloudpassion/3x-ui v0.0.0-20260406131928-43cb6c195bfd
-	github.com/cloudpassion/xray-core main
+	github.com/cloudpassion/xray-core v0.0.0-20260407050337-d534e63881af
 	github.com/gin-contrib/gzip v1.2.5
 	github.com/gin-contrib/sessions v1.0.4
 	github.com/gin-gonic/gin v1.12.0
@@ -40,7 +40,7 @@ require (
 	github.com/bytedance/sonic/loader v0.5.0 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/cloudflare/circl v1.6.3 // indirect
-	github.com/cloudpassion/reality main
+	github.com/cloudpassion/reality v0.0.0-20260407095639-71a0afcf658d // indirect
 	github.com/cloudwego/base64x v0.1.6 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/ebitengine/purego v0.10.0 // indirect
