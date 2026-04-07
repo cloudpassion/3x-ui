@@ -129,7 +129,7 @@
         const rawUrl = this.app.subUrl + '?flag=shadowrocket';
         const base64Url = btoa(rawUrl);
         const remark = encodeURIComponent(this.app.sId || 'Subscription');
-        return `shadowrocket://add/sub/${base64Url}?remark=${remark}`;
+        return `shadowrocket://add/${base64Url}#${remark}`;
       },
       v2boxUrl() {
         return `v2box://install-sub?url=${encodeURIComponent(this.app.subUrl)}&name=${encodeURIComponent(this.app.sId)}`;
