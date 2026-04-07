@@ -20,7 +20,7 @@ require (
 	github.com/skip2/go-qrcode v0.0.0-20200617195104-da1b6568686e
 	github.com/valyala/fasthttp v1.69.0
 	github.com/xlzd/gotp v0.1.0
-	github.com/cloudpassion/xray-core v1.260206.0
+	github.com/cloudpassion/xray-core main
 	go.uber.org/atomic v1.11.0
 	golang.org/x/crypto v0.48.0
 	golang.org/x/sys v0.41.0
@@ -82,7 +82,7 @@ require (
 	github.com/valyala/fastjson v1.6.10 // indirect
 	github.com/vishvananda/netlink v1.3.1 // indirect
 	github.com/vishvananda/netns v0.0.5 // indirect
-	github.com/cloudpassion/reality v0.0.0-20251116175510-cd53f7d50237 // indirect
+	github.com/cloudpassion/reality main
 	github.com/yusufpapurcu/wmi v1.2.4 // indirect
 	go.mongodb.org/mongo-driver/v2 v2.5.0 // indirect
 	go4.org/netipx v0.0.0-20231129151722-fdeea329fbba // indirect
