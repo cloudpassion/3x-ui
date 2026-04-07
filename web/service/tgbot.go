@@ -2371,7 +2371,8 @@ func (t *Tgbot) buildSubscriptionURLs(email string) (string, string, error) {
 	if (subPort == 443 && is_tls) || (subPort == 80 && !is_tls) {
 		// standard ports: no port in host
 	} else {
-		host = fmt.Sprintf("%s:%d", subDomain, subPort)
+		// standard ports: no port in host
+		//host = fmt.Sprintf("%s:%d", subDomain, subPort)
 	}
 
 	// Ensure paths
