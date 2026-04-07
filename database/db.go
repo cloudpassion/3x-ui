@@ -12,10 +12,10 @@ import (
 	"path"
 	"slices"
 
-	"github.com/mhsanaei/3x-ui/v2/config"
-	"github.com/mhsanaei/3x-ui/v2/database/model"
-	"github.com/mhsanaei/3x-ui/v2/util/crypto"
-	"github.com/mhsanaei/3x-ui/v2/xray"
+	"github.com/cloudpassion/3x-ui/v2/config"
+	"github.com/cloudpassion/3x-ui/v2/database/model"
+	"github.com/cloudpassion/3x-ui/v2/util/crypto"
+	"github.com/cloudpassion/3x-ui/v2/xray"
 
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
