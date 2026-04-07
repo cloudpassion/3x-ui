@@ -3,7 +3,7 @@ module github.com/cloudpassion/3x-ui
 go 1.26.0
 
 require (
-	github.com/cloudpassion/Xray-core v0.0.0-20260407110913-2e772181
+	github.com/cloudpassion/Xray-core v0.0.0-20260407110913-947d8bc9a52c56d90abfb6874a08eaedc1048ad6
 	github.com/gin-contrib/gzip v1.2.5
 	github.com/gin-contrib/sessions v1.0.4
 	github.com/gin-gonic/gin v1.12.0
