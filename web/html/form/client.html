@@ -34,7 +34,7 @@
                 <template slot="title">
                     <span>{{ i18n "reset" }}</span>
                 </template>
-                ID <a-icon @click="client.id = RandomUtil.randomUUID()" type="sync"></a-icon>
+                ID <a-icon @click="client.id = ExtraUtils.GetFreeUUID()" type="sync"></a-icon>
             </a-tooltip>
         </template>
         <a-input v-model.trim="client.id"></a-input>
