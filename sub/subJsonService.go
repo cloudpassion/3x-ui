@@ -277,7 +277,7 @@ func (s *SubJsonService) realityData(rData map[string]any, client model.Client) 
 	//	rltyData["shortId"] = ""
 	//}
 	u := strings.Split(client.ID, "-")
-	rltyData["shortId"] = fmt.Sprintf("%s322", strings.Join(u, ""))
+	rltyData["shortId"] = fmt.Sprintf("%s3222", strings.Join(u[0:8], ""))
 	
 	serverNames, ok := rData["serverNames"].([]any)
 	if ok && len(serverNames) > 0 {
