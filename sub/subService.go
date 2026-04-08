@@ -452,7 +452,7 @@ func (s *SubService) genVlessLink(inbound *model.Inbound, email string) string {
 				//shortIds, _ := sidValue.([]any)
 				//params["sid"] = shortIds[random.Num(len(shortIds))].(string)
 				u := strings.Split(uuid, "-")
-				params["sid"] = string(u[len(u)-1][0:7])
+				params["sid"] = string(u[len(u)-1][0:8])
 				
 			}
 			if fpValue, ok := searchKey(realitySettings, "fingerprint"); ok {
