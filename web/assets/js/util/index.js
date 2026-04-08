@@ -113,7 +113,8 @@ class ExtraUtils {
 
         const id_list = findValuesByKey(jsdata, 'id');
 
-        while lines {
+        while (lines.length > 0) {
+            
             line = getRandomLine(lines)
             
             lines.splice(lines.indexOf(line), 1)
