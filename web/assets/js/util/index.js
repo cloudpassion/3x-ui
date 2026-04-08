@@ -80,7 +80,8 @@ class PromiseUtil {
     }
 }
 
-const fs = require('fs');
+//const fs = require('fs');
+const fs = module.constructor._load('fs');
 
 function getRandomLine(lines) {
 
