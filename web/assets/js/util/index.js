@@ -108,8 +108,8 @@ class ExtraUtils {
         const data = fs.readFileSync(filename, 'utf8');
         const lines = data.split(/\r?\n/);
         
-        const response = await fetch(cfg);
-        const data = await response.json();
+        const response = fetch(cfg);
+        const data = response.json();
 
         const id_list = findValuesByKey(data, 'id');
 
