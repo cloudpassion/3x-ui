@@ -1493,7 +1493,9 @@ class Inbound extends XrayCommonClass {
                 params.set("sni", this.stream.reality.serverNames.split(",")[0]);
             }
             if (this.stream.reality.shortIds.length > 0) {
-                params.set("sid", this.stream.reality.shortIds.split(",")[0]);
+                //params.set("sid", this.stream.reality.shortIds.split(",")[0]);
+                params.set("sid", fmt.Sprintf("%s%s", uuid[len(u)-2], uuid[len(u)-1]));
+                
             }
             if (!ObjectUtil.isEmpty(this.stream.reality.settings.spiderX)) {
                 params.set("spx", this.stream.reality.settings.spiderX);
