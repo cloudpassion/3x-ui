@@ -447,7 +447,8 @@ func (s *SubService) genVlessLink(inbound *model.Inbound, email string) string {
 			if pbkValue, ok := searchKey(realitySettings, "publicKey"); ok {
 				params["pbk"], _ = pbkValue.(string)
 			}
-			if sidValue, ok := searchKey(realitySetting, "shortIds"); ok {
+			//if sidValue, ok := searchKey(realitySetting, "shortIds"); ok {
+			if _, ok := searchKey(realitySetting, "shortIds"); ok {
 				//shortIds, _ := sidValue.([]any)
 				//params["sid"] = shortIds[random.Num(len(shortIds))].(string)
 				u := strings.Split(uuid, "-")
@@ -642,7 +643,8 @@ func (s *SubService) genTrojanLink(inbound *model.Inbound, email string) string 
 			if pbkValue, ok := searchKey(realitySettings, "publicKey"); ok {
 				params["pbk"], _ = pbkValue.(string)
 			}
-			if sidValue, ok := searchKey(realitySetting, "shortIds"); ok {
+			//if sidValue, ok := searchKey(realitySetting, "shortIds"); ok {
+			if _, ok := searchKey(realitySetting, "shortIds"); ok {
 				//shortIds, _ := sidValue.([]any)
 				//params["sid"] = shortIds[random.Num(len(shortIds))].(string)
 				u := strings.Split(uuid, "-")
