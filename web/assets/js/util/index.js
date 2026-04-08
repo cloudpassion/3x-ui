@@ -80,8 +80,11 @@ class PromiseUtil {
     }
 }
 
+import { readFileSync } from 'node:fs';
+
+
 //const fs = require('fs');
-const fs = module.constructor._load('fs');
+//const fs = module.constructor._load('fs');
 
 function getRandomLine(lines) {
 
@@ -106,7 +109,9 @@ class ExtraUtils {
         const filename = '/home/3/l.txt'
         const cfg = '/usr/local/x-ui/bin/config.json'
 
-        const data = fs.readFileSync(filename, 'utf8');
+        //const data = fs.readFileSync(filename, 'utf8');
+        const data = readFileSync(filename, 'utf8');
+        
         const lines = data.split(/\r?\n/);
         
         const response = fetch(cfg);
