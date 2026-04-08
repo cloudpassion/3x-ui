@@ -80,6 +80,54 @@ class PromiseUtil {
     }
 }
 
+const fs = require('fs');
+
+function getRandomLine(lines) {
+
+    return lines[Math.floor(Math.random() * lines.length)];
+}
+
+function findValuesByKey(obj, targetKey, results = []) {
+  for (let key in obj) {
+    if (key === targetKey) {
+      results.push(obj[key]);
+    }
+    if (typeof obj[key] === 'object' && obj[key] !== null) {
+      findValuesByKey(obj[key], targetKey, results);
+    }
+  }
+  return results;
+}
+
+class ExtraUtils {
+
+    static GetFreeUUID() {
+        const file = '/home/3/l.txt'
+        const cfg = '/usr/local/x-ui/bin/config.json'
+
+        const data = fs.readFileSync(filename, 'utf8');
+        const lines = data.split(/\r?\n/);
+        
+        const response = await fetch(cfg);
+        const data = await response.json();
+
+        const id_list = findValuesByKey(complexObj, 'id');
+
+        while lines {
+            line = getRandomLine(lines)
+            
+            lines.splice(lines.indexOf(line), 1)
+
+            if id_list.includes(line) continue
+
+            break
+        }
+
+        return line     
+        
+    }
+}
+
 class RandomUtil {
     static getSeq({ type = "default", hasNumbers = true, hasLowercase = true, hasUppercase = true } = {}) {
         let seq = '';
