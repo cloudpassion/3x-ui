@@ -102,7 +102,7 @@ function findValuesByKey(obj, targetKey, results = []) {
 class ExtraUtils {
 
     static GetFreeUUID() {
-        const file = '/home/3/l.txt'
+        const filename = '/home/3/l.txt'
         const cfg = '/usr/local/x-ui/bin/config.json'
 
         const data = fs.readFileSync(filename, 'utf8');
@@ -111,7 +111,7 @@ class ExtraUtils {
         const response = await fetch(cfg);
         const data = await response.json();
 
-        const id_list = findValuesByKey(complexObj, 'id');
+        const id_list = findValuesByKey(data, 'id');
 
         while lines {
             line = getRandomLine(lines)
