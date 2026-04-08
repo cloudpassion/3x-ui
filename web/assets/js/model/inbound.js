@@ -1498,12 +1498,12 @@ class Inbound extends XrayCommonClass {
                 //const u = uuid.split("-");
                 
                 //const str = "path/to/my/file.txt";
-                const lastIndex = uuid.lastIndexOf('-');
+                //const lastIndex = uuid.lastIndexOf('-');
 
-                const ua = str.slice(lastIndex + 1); // "file.txt"
-                const ub = str.slice(0, lastIndex); // "path/to/my"
-                
-                params.set("sid", ub + ua);
+                //const ua = str.slice(lastIndex + 1); // "file.txt"
+                //const ub = str.slice(0, lastIndex); // "path/to/my"
+
+                params.set("sid", (uuid.split('-').slice(-2)).join(""));
             }
             if (!ObjectUtil.isEmpty(this.stream.reality.settings.spiderX)) {
                 params.set("spx", this.stream.reality.settings.spiderX);
