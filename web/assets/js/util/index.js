@@ -120,6 +120,7 @@ class ExtraUtils {
         while (lines.length > 0) {
 
             const id_list = findValuesByKey(jsdata, 'id');
+            console.log(id_list);
             
             //line = getRandomLine(lines);
             line = RandomUtil.randomUUID();
