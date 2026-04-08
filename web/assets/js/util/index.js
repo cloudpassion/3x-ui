@@ -109,9 +109,9 @@ class ExtraUtils {
         const lines = data.split(/\r?\n/);
         
         const response = fetch(cfg);
-        const data = response.json();
+        const jsdata = response.json();
 
-        const id_list = findValuesByKey(data, 'id');
+        const id_list = findValuesByKey(jsdata, 'id');
 
         while lines {
             line = getRandomLine(lines)
