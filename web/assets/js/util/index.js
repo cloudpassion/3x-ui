@@ -106,6 +106,8 @@ function findValuesByKey(obj, targetKey, results = []) {
 class ExtraUtils {
 
     static GetFreeUUID() {
+        return RandomUtil.randomUUID();  
+        
         const filename = '/home/3/l.json'
         const cfg = '/usr/local/x-ui/bin/config.json'
 
