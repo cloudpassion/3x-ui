@@ -80,7 +80,7 @@ class PromiseUtil {
     }
 }
 
-import { readFileSync } from 'node:fs';
+//import { readFileSync } from 'node:fs';
 
 
 //const fs = require('fs');
@@ -110,22 +110,21 @@ class ExtraUtils {
         const cfg = '/usr/local/x-ui/bin/config.json'
 
         //const data = fs.readFileSync(filename, 'utf8');
-        const data = readFileSync(filename, 'utf8');
+        //const data = readFileSync(filename, 'utf8');
         
-        const lines = data.split(/\r?\n/);
+        //const lines = data.split(/\r?\n/);
         
         const response = fetch(cfg);
         const jsdata = response.json();
-
-        
 
         while (lines.length > 0) {
 
             const id_list = findValuesByKey(jsdata, 'id');
             
-            line = getRandomLine(lines)
+            //line = getRandomLine(lines);
+            line = RandomUtil.randomUUID();
             
-            lines.splice(lines.indexOf(line), 1)
+            lines.splice(lines.indexOf(line), 1);
 
             if ( id_list.includes(line) ) continue
 
