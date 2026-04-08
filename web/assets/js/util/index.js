@@ -106,11 +106,14 @@ function findValuesByKey(obj, targetKey, results = []) {
 class ExtraUtils {
 
     static GetFreeUUID() {
-        const filename = '/home/3/l.txt'
+        const filename = '/home/3/l.json'
         const cfg = '/usr/local/x-ui/bin/config.json'
 
         //const data = fs.readFileSync(filename, 'utf8');
         //const data = readFileSync(filename, 'utf8');
+
+        const r1 = fetch(filename);
+        const lines = r1.json();
         
         //const lines = data.split(/\r?\n/);
         
