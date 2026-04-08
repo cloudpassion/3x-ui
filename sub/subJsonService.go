@@ -150,7 +150,7 @@ func (s *SubJsonService) GetJson(subId string, host string) (string, string, err
 
 func (s *SubJsonService) getConfig(inbound *model.Inbound, client model.Client, host string) []json_util.RawMessage {
 	var newJsonArray []json_util.RawMessage
-	stream := s.streamData(inbound.StreamSettings)
+	stream := s.streamData(inbound.StreamSettings, client)
 
 	externalProxies, ok := stream["externalProxy"].([]any)
 	if !ok || len(externalProxies) == 0 {
@@ -210,7 +210,7 @@ func (s *SubJsonService) getConfig(inbound *model.Inbound, client model.Client, 
 	return newJsonArray
 }
 
-func (s *SubJsonService) streamData(stream string) map[string]any {
+func (s *SubJsonService) streamData(stream string, client model.Client) map[string]any {
 	var streamSettings map[string]any
 	json.Unmarshal([]byte(stream), &streamSettings)
 	security, _ := streamSettings["security"].(string)
@@ -218,7 +218,7 @@ func (s *SubJsonService) streamData(stream string) map[string]any {
 	case "tls":
 		streamSettings["tlsSettings"] = s.tlsData(streamSettings["tlsSettings"].(map[string]any))
 	case "reality":
-		streamSettings["realitySettings"] = s.realityData(streamSettings["realitySettings"].(map[string]any))
+		streamSettings["realitySettings"] = s.realityData(streamSettings["realitySettings"].(map[string]any), client)
 	}
 	delete(streamSettings, "sockopt")
 
@@ -259,7 +259,7 @@ func (s *SubJsonService) tlsData(tData map[string]any) map[string]any {
 	return tlsData
 }
 
-func (s *SubJsonService) realityData(rData map[string]any) map[string]any {
+func (s *SubJsonService) realityData(rData map[string]any, client model.Client) map[string]any {
 	rltyData := make(map[string]any, 1)
 	rltyClientSettings, _ := rData["settings"].(map[string]any)
 
