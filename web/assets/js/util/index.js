@@ -111,15 +111,17 @@ class ExtraUtils {
         const response = fetch(cfg);
         const jsdata = response.json();
 
-        const id_list = findValuesByKey(jsdata, 'id');
+        
 
         while (lines.length > 0) {
+
+            const id_list = findValuesByKey(jsdata, 'id');
             
             line = getRandomLine(lines)
             
             lines.splice(lines.indexOf(line), 1)
 
-            if id_list.includes(line) continue
+            if ( id_list.includes(line) ) continue
 
             break
         }
