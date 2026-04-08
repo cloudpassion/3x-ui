@@ -125,13 +125,12 @@ class ExtraUtils {
             const id_list = findValuesByKey(jsdata, 'id');
             console.log(id_list);
             
-            //line = getRandomLine(lines);
-            line = RandomUtil.randomUUID();
-            
+            line = getRandomLine(lines);
             lines.splice(lines.indexOf(line), 1);
-
             if ( id_list.includes(line) ) continue
-
+            
+            //line = RandomUtil.randomUUID();  
+            
             break
         }
 
