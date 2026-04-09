@@ -1737,17 +1737,13 @@ class Inbound extends XrayCommonClass {
     }
 
     genAllLinks(remark = '', remarkModel = '-ieo', client, sub_domain) {
-        //console.log('t1');
-        //console.log(this);
-        //console.log('t2');
-        //console.log(this._getDefaultSettings("123", settings));
-        //console.log('t3');
+        console.log(sub_domain);
         
         
         let result = [];
         let email = client ? client.email : '';
         //let addr = !ObjectUtil.isEmpty(this.listen) && this.listen !== "0.0.0.0" ? this.listen : location.hostname;
-        let addr = !ObjectUtil.isEmpty(sub_domain) ? sub_domain : "edit_sub_domain";
+        let addr = !ObjectUtil.isEmpty(sub_domain) ? "edit_sub_domain" : sub_domain;
         let port = this.port;
         const separationChar = remarkModel.charAt(0);
         const orderChars = remarkModel.slice(1);
@@ -1780,7 +1776,7 @@ class Inbound extends XrayCommonClass {
         if (this.clients) {
             let links = [];
             this.clients.forEach((client) => {
-                this.genAllLinks(remark, remarkModel, client).forEach(l => {
+                this.genAllLinks(remark, remarkModel, client, "").forEach(l => {
                     links.push(l.link);
                 })
             });
