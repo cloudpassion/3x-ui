@@ -119,18 +119,17 @@
           this.qrcodes.push({
             remark: "Peer " + (index + 1),
             link: l,
-            useIPv4: false,
+            useIPv4: true,
             originalLink: l
           });
         });
       } else {
-        ch = ((app.subSettings.subURI).split("/")[2:3]).join("");
-        consoloe.log(ch);        
+        const ch = app.subSettings.subURI.split("/")[2];
         this.inbound.genAllLinks(this.dbInbound.remark, app.remarkModel, client, ch).forEach(l => {
           this.qrcodes.push({
             remark: l.remark,
             link: l.link,
-            useIPv4: false,
+            useIPv4: true,
             originalLink: l.link
           });
         });
