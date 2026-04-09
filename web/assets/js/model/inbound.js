@@ -1740,7 +1740,7 @@ class Inbound extends XrayCommonClass {
         let result = [];
         let email = client ? client.email : '';
         //let addr = !ObjectUtil.isEmpty(this.listen) && this.listen !== "0.0.0.0" ? this.listen : location.hostname;
-        let addr = this.subDomain;
+        let addr = this.listen;
         let port = this.port;
         const separationChar = remarkModel.charAt(0);
         const orderChars = remarkModel.slice(1);
