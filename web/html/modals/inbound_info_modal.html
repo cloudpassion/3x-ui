@@ -670,11 +670,11 @@
       if (this.inbound.protocol == Protocols.WIREGUARD) {
         this.links = this.inbound.genInboundLinks(dbInbound.remark).split('\r\n')
       } else {
-        //console.log("test");
-        //ch = ((app.subSettings.subURI).split("/")[2:3]).join("");
-        //consoloe.log(ch);
-        //this.links = this.inbound.genAllLinks(this.dbInbound.remark, app.remarkModel, this.clientSettings, ch);
-        this.links = this.inbound.genAllLinks(this.dbInbound.remark, app.remarkModel, this.clientSettings);
+        console.log("test");
+        const ch = ((app.subSettings.subURI).split("/")[2:3]).join("");
+        consoloe.log(ch);
+        this.links = this.inbound.genAllLinks(this.dbInbound.remark, app.remarkModel, this.clientSettings, ch);
+        //this.links = this.inbound.genAllLinks(this.dbInbound.remark, app.remarkModel, this.clientSettings);
       }
       if (this.clientSettings) {
         if (this.clientSettings.subId) {
