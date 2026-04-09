@@ -1739,14 +1739,14 @@ class Inbound extends XrayCommonClass {
         console.log('t1');
         console.log(this);
         console.log('t2');
-        console.log(this._getDefaultSettings(type, settings));
+        //console.log(this._getDefaultSettings(type, settings));
         console.log('t3');
         
         
         let result = [];
         let email = client ? client.email : '';
-        //let addr = !ObjectUtil.isEmpty(this.listen) && this.listen !== "0.0.0.0" ? this.listen : location.hostname;
-        let addr = this.listen;
+        let addr = !ObjectUtil.isEmpty(this.listen) && this.listen !== "0.0.0.0" ? this.listen : location.hostname;
+        //let addr = this.listen;
         let port = this.port;
         const separationChar = remarkModel.charAt(0);
         const orderChars = remarkModel.slice(1);
