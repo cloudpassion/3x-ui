@@ -41,3 +41,7 @@ docker-compose.override.yml
 
 short.list.txt
 uuid.list.txt
+uuid.list.json
+bk
+gen.sh
+gen.py
