@@ -4,6 +4,7 @@ import (
 	_ "embed"
 	"encoding/json"
 	"fmt"
+	"net"
 	"maps"
 	"strings"
 
@@ -191,7 +192,26 @@ func (s *SubJsonService) getConfig(inbound *model.Inbound, client model.Client, 
 		case "vmess":
 			newOutbounds = append(newOutbounds, s.genVnext(inbound, streamSettings, client))
 		case "vless":
-			newOutbounds = append(newOutbounds, s.genVless(inbound, streamSettings, client))
+
+			// default, only domain
+			newOutbounds = append(newOutbounds, s.genVless(inbound, streamSettings, client, nil))
+			
+			// all ips
+			domain := inbound.Listen
+			logger.Info("Domain: " + domain)
+				
+				ips, err := net.LookupIP(domain)
+				if err != nil {
+					logger.Error(err)
+				} else {
+					for _, ip := range ips {
+						logger.Info(domain + " IP: " + ip.String())
+						ip_link := strings.ReplaceAll(link, domain, ip.String())
+						newOutbounds = append(newOutbounds, s.genVless(inbound, streamSettings, client, ip_link))
+					}
+				}
+			
+			
 		case "trojan", "shadowsocks":
 			newOutbounds = append(newOutbounds, s.genServer(inbound, streamSettings, client))
 		}
@@ -317,7 +337,7 @@ func (s *SubJsonService) genVnext(inbound *model.Inbound, streamSettings json_ut
 	return result
 }
 
-func (s *SubJsonService) genVless(inbound *model.Inbound, streamSettings json_util.RawMessage, client model.Client) json_util.RawMessage {
+func (s *SubJsonService) genVless(inbound *model.Inbound, streamSettings json_util.RawMessage, client model.Client, string ip_link) json_util.RawMessage {
 	outbound := Outbound{}
 	outbound.Protocol = string(inbound.Protocol)
 	//outbound.Tag = "proxy"
@@ -327,7 +347,12 @@ func (s *SubJsonService) genVless(inbound *model.Inbound, streamSettings json_ut
 	}
 	outbound.StreamSettings = streamSettings
 	settings := make(map[string]any)
-	settings["address"] = inbound.Listen
+	if is_ip == nil {
+		settings["address"] = inbound.Listen
+	} else {
+		settings["address"] = ip_link
+	}
+		
 	settings["port"] = inbound.Port
 	settings["id"] = client.ID
 	settings["uuid"] = client.ID
