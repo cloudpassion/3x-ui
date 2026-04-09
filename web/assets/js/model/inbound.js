@@ -1419,7 +1419,7 @@ class Inbound extends XrayCommonClass {
     }
 
     genVLESSLink(address = '', port = this.port, forceTls, remark = '', clientId, flow) {
-        console.log(this);
+        //console.log(this);
         const uuid = clientId;
         const type = this.stream.network;
         const security = forceTls == 'same' ? this.stream.security : forceTls;
