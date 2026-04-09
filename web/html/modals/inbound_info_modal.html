@@ -670,7 +670,7 @@
       if (this.inbound.protocol == Protocols.WIREGUARD) {
         this.links = this.inbound.genInboundLinks(dbInbound.remark).split('\r\n')
       } else {
-        this.links = this.inbound.genAllLinks(this.dbInbound.remark, app.remarkModel, this.clientSettings);
+        this.links = this.inbound.genAllLinks(this.dbInbound.remark, app.remarkModel, this.clientSettings, app.subDomain);
       }
       if (this.clientSettings) {
         if (this.clientSettings.subId) {
