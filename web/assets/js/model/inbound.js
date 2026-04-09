@@ -1756,11 +1756,7 @@ class Inbound extends XrayCommonClass {
             result.push({
                 remark: r,
                 link: this.genLink(addr, port, 'same', r, client)
-            });      
-            result.push({
-                remark: r,
-                link: this.genLink(addr, port, 'same', r, client)
-            });            
+            });    
         } else {
             this.stream.externalProxy.forEach((ep) => {
                 orders['o'] = ep.remark;
