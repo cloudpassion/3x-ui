@@ -87,7 +87,7 @@ func (s *SubService) GetSubs(subId string, host string) ([]string, int64, xray.C
 					logger.Error(err)
 				} else {
 					for _, ip := range ips {
-						logger.Info(domain + " IP: " + ip.String()))
+						logger.Info(domain + " IP: " + ip.String())
 						ip_link := strings.ReplaceAll(link, domain, ip.String())
 						result = append(result, ip_link)
 					}
