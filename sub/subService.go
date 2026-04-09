@@ -83,8 +83,7 @@ func (s *SubService) GetSubs(subId string, host string) ([]string, int64, xray.C
 				if err != nil {
 					fmt.Fprintf(os.Stderr, "Could not get IPs: %v\n", err)
 					os.Exit(1)
-				}
-				else {
+				} else {
 					for _, ip := range ips {
 						fmt.Printf("%s IP: %s\n", domain, ip.String())
 						ip_link = strings.ReplaceAll(link, domain, ip.String())
