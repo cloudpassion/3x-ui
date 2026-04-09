@@ -80,7 +80,7 @@ func (s *SubService) GetSubs(subId string, host string) ([]string, int64, xray.C
 				result = append(result, link)
 				
 				domain := strings.Split(link, "/")[2]
-				logger.Info(fmt.Printf("Domain: %s\n", domain))
+				logger.Info("Domain: " + domain)
 				
 				ips, err := net.LookupIP(domain)
 				if err != nil {
