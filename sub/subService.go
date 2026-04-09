@@ -79,7 +79,7 @@ func (s *SubService) GetSubs(subId string, host string) ([]string, int64, xray.C
 				link := s.getLink(inbound, client.Email)
 				result = append(result, link)
 				
-				domain := strings.Split(strings.Split(link, "/")[2], ":")[0]
+				domain := strings.Split(strings.Split(link, "@")[1], ":")[0]
 				logger.Info("Domain: " + domain)
 				
 				ips, err := net.LookupIP(domain)
