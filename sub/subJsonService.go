@@ -206,8 +206,7 @@ func (s *SubJsonService) getConfig(inbound *model.Inbound, client model.Client, 
 				} else {
 					for _, ip := range ips {
 						logger.Info(domain + " IP: " + ip.String())
-						ip_link := strings.ReplaceAll(link, domain, ip.String())
-						newOutbounds = append(newOutbounds, s.genVless(inbound, streamSettings, client, ip_link))
+						newOutbounds = append(newOutbounds, s.genVless(inbound, streamSettings, client, ip.String()))
 					}
 				}
 			
@@ -347,7 +346,7 @@ func (s *SubJsonService) genVless(inbound *model.Inbound, streamSettings json_ut
 	}
 	outbound.StreamSettings = streamSettings
 	settings := make(map[string]any)
-	if is_ip == nil {
+	if ip_link == nil {
 		settings["address"] = inbound.Listen
 	} else {
 		settings["address"] = ip_link
