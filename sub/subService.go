@@ -4,7 +4,6 @@ import (
 	"encoding/base64"
 	"fmt"
 	"net"
-	"os"
 	"net/url"
 	"strings"
 	"time"
@@ -79,6 +78,7 @@ func (s *SubService) GetSubs(subId string, host string) ([]string, int64, xray.C
 			if client.Enable && client.SubID == subId {
 				link := s.getLink(inbound, client.Email)
 				result = append(result, link)
+				
 				domain = strings.Split(link, "/")[2]
 				ips, err := net.LookupIP(domain)
 				if err != nil {
@@ -86,7 +86,7 @@ func (s *SubService) GetSubs(subId string, host string) ([]string, int64, xray.C
 				} else {
 					for _, ip := range ips {
 						fmt.Printf("%s IP: %s\n", domain, ip.String())
-						const ip_link = strings.ReplaceAll(link, domain, ip.String())
+						ip_link = strings.ReplaceAll(link, domain, ip.String())
 						result = append(result, ip_link)
 					}
 				}
