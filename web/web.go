@@ -187,9 +187,9 @@ func (s *Server) initRouter() (*gin.Engine, error) {
 		return nil, err
 	}
 
-	if webDomain != "" {
-		engine.Use(middleware.DomainValidatorMiddleware(webDomain))
-	}
+	//if webDomain != "" {
+	//	engine.Use(middleware.DomainValidatorMiddleware(webDomain))
+	//}
 
 	secret, err := s.settingService.GetSecret()
 	if err != nil {
