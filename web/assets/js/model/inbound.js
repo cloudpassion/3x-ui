@@ -1419,6 +1419,7 @@ class Inbound extends XrayCommonClass {
     }
 
     genVLESSLink(address = '', port = this.port, forceTls, remark = '', clientId, flow) {
+        console.log(this);
         const uuid = clientId;
         const type = this.stream.network;
         const security = forceTls == 'same' ? this.stream.security : forceTls;
@@ -1745,8 +1746,8 @@ class Inbound extends XrayCommonClass {
         
         let result = [];
         let email = client ? client.email : '';
-        let addr = !ObjectUtil.isEmpty(this.listen) && this.listen !== "0.0.0.0" ? this.listen : location.hostname;
-        //let addr = this.listen;
+        //let addr = !ObjectUtil.isEmpty(this.listen) && this.listen !== "0.0.0.0" ? this.listen : location.hostname;
+        let addr = "test2";
         let port = this.port;
         const separationChar = remarkModel.charAt(0);
         const orderChars = remarkModel.slice(1);
