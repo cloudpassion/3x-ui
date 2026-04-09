@@ -15,8 +15,8 @@
         <tr>
           <td>{{ i18n "pages.inbounds.address" }}</td>
           <td>
-            <a-tooltip :title="[[ app.subSettings.subURI ]]">
-              <a-tag class="info-large-tag">[[ app.subSettings.subURI ]]</a-tag>
+            <a-tooltip :title="[[ app.subSettings.subURI.split("/")[2] ]]">
+              <a-tag class="info-large-tag">[[ app.subSettings.subURI.split("/")[2] ]]</a-tag>
             </a-tooltip>
           </td>
         </tr>
@@ -671,14 +671,14 @@
         this.links = this.inbound.genInboundLinks(dbInbound.remark).split('\r\n')
       } else {
         console.log("test");
-        const uri = app.subSettings.subURI.split("/");
-        console.log(uri);
+        const ch = app.subSettings.subURI.split("/")[2];
+        //console.log(ch);
         //const aru = uri[2:3];
         //console.log(aru);
         //const ch = aru.join("");
         //consoloe.log(ch);
-        //this.links = this.inbound.genAllLinks(this.dbInbound.remark, app.remarkModel, this.clientSettings, ch);
-        this.links = this.inbound.genAllLinks(this.dbInbound.remark, app.remarkModel, this.clientSettings);
+        this.links = this.inbound.genAllLinks(this.dbInbound.remark, app.remarkModel, this.clientSettings, ch);
+        //this.links = this.inbound.genAllLinks(this.dbInbound.remark, app.remarkModel, this.clientSettings);
       }
       if (this.clientSettings) {
         if (this.clientSettings.subId) {
