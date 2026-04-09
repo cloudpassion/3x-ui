@@ -182,10 +182,10 @@ func (s *Server) initRouter() (*gin.Engine, error) {
 
 	engine := gin.Default()
 
-	webDomain, err := s.settingService.GetWebDomain()
-	if err != nil {
-		return nil, err
-	}
+	//webDomain, err := s.settingService.GetWebDomain()
+	//if err != nil {
+	//	return nil, err
+	//}
 
 	//if webDomain != "" {
 	//	engine.Use(middleware.DomainValidatorMiddleware(webDomain))
