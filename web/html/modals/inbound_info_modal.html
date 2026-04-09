@@ -671,7 +671,11 @@
         this.links = this.inbound.genInboundLinks(dbInbound.remark).split('\r\n')
       } else {
         console.log("test");
-        //const ch = ((app.subSettings.subURI).split("/")[2:3]).join("");
+        const uri = app.subSettings.subURI.split("/");
+        console.log(uri);
+        //const aru = uri[2:3];
+        //console.log(aru);
+        //const ch = aru.join("");
         //consoloe.log(ch);
         //this.links = this.inbound.genAllLinks(this.dbInbound.remark, app.remarkModel, this.clientSettings, ch);
         this.links = this.inbound.genAllLinks(this.dbInbound.remark, app.remarkModel, this.clientSettings);
