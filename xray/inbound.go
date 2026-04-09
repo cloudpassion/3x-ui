@@ -10,7 +10,7 @@ import (
 // It defines how Xray accepts incoming connections including protocol, port, and settings.
 type InboundConfig struct {
 	Listen         json_util.RawMessage `json:"listen"` // listen cannot be an empty string
-	SubHost		   string 				`json:"subhost"`
+	SubHost		   json_util.RawMessage `json:"subhost"` // listen cannot be an empty string
 	Port           int                  `json:"port"`
 	Protocol       string               `json:"protocol"`
 	Settings       json_util.RawMessage `json:"settings"`
