@@ -89,7 +89,6 @@ func (i *Inbound) GenXrayInboundConfig() *xray.InboundConfig {
 	listen = fmt.Sprintf("\"%v\"", listen)
 	return &xray.InboundConfig{
 		Listen:         json_util.RawMessage(listen),
-		SubHost:		string(i.SubHost),
 		Port:           i.Port,
 		Protocol:       string(i.Protocol),
 		Settings:       json_util.RawMessage(i.Settings),
