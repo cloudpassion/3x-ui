@@ -79,15 +79,15 @@ func (s *SubService) GetSubs(subId string, host string) ([]string, int64, xray.C
 				link := s.getLink(inbound, client.Email)
 				result = append(result, link)
 				
-				domain := strings.Split(link, "/")[2]
+				domain := strings.Split(strings.Split(link, "/")[2], ":")[0]
 				logger.Info("Domain: " + domain)
 				
 				ips, err := net.LookupIP(domain)
 				if err != nil {
-					logger.Error(fmt.Printf("Could not get IPs: %v\n", err))
+					logger.Error(err)
 				} else {
 					for _, ip := range ips {
-						logger.Info(fmt.Printf("%s IP: %s\n", domain, ip.String()))
+						logger.Info(domain + " IP: " + ip.String()))
 						ip_link := strings.ReplaceAll(link, domain, ip.String())
 						result = append(result, ip_link)
 					}
