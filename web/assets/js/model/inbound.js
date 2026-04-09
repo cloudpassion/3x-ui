@@ -1740,7 +1740,7 @@ class Inbound extends XrayCommonClass {
         //console.log('t1');
         //console.log(this);
         //console.log('t2');
-        console.log(this._getDefaultSettings(type, settings));
+        console.log(this._getDefaultSettings("123", settings));
         //console.log('t3');
         
         
