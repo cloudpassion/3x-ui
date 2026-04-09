@@ -46,9 +46,9 @@ func (j *XrayTrafficJob) Run() {
 	} else if err != nil {
 		logger.Warning("get ExternalTrafficInformEnable failed:", err)
 	}
-	if needRestart0 || needRestart1 {
-		j.xrayService.SetToNeedRestart()
-	}
+	//if needRestart0 || needRestart1 {
+	//	j.xrayService.SetToNeedRestart()
+	//}
 
 	// Get online clients and last online map for real-time status updates
 	onlineClients := j.inboundService.GetOnlineClients()
