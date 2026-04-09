@@ -194,7 +194,7 @@ func (s *SubJsonService) getConfig(inbound *model.Inbound, client model.Client, 
 		case "vless":
 
 			// default, only domain
-			newOutbounds = append(newOutbounds, s.genVless(inbound, streamSettings, client, nil))
+			newOutbounds = append(newOutbounds, s.genVless(inbound, streamSettings, client, ""))
 			
 			// all ips
 			domain := inbound.Listen
@@ -346,7 +346,7 @@ func (s *SubJsonService) genVless(inbound *model.Inbound, streamSettings json_ut
 	}
 	outbound.StreamSettings = streamSettings
 	settings := make(map[string]any)
-	if ip_link == nil {
+	if ip_link == "" {
 		settings["address"] = inbound.Listen
 	} else {
 		settings["address"] = ip_link
