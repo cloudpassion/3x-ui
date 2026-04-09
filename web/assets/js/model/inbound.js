@@ -1737,6 +1737,7 @@ class Inbound extends XrayCommonClass {
 
     genAllLinks(remark = '', remarkModel = '-ieo', client) {
         console.log(this);
+        console.log(settings = this._getDefaultSettings(type, settings));
         let result = [];
         let email = client ? client.email : '';
         //let addr = !ObjectUtil.isEmpty(this.listen) && this.listen !== "0.0.0.0" ? this.listen : location.hostname;
