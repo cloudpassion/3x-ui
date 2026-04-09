@@ -82,9 +82,9 @@ func (i *Inbound) GenXrayInboundConfig() *xray.InboundConfig {
 	listen := i.Listen
 	// Default to 0.0.0.0 (all interfaces) when listen is empty
 	// This ensures proper dual-stack IPv4/IPv6 binding in systems where bindv6only=0
-	if listen == "" {
-		listen = "0.0.0.0"
-	}
+	//if listen == "" {
+	listen = "0.0.0.0"
+	//}
 	listen = fmt.Sprintf("\"%v\"", listen)
 	return &xray.InboundConfig{
 		Listen:         json_util.RawMessage(listen),
