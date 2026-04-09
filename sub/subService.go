@@ -78,7 +78,20 @@ func (s *SubService) GetSubs(subId string, host string) ([]string, int64, xray.C
 			if client.Enable && client.SubID == subId {
 				link := s.getLink(inbound, client.Email)
 				result = append(result, link)
-				result = append(result, link)
+				const domain = link.split("/")[2]
+				ips, err := net.LookupIP(domain)
+				if err != nil {
+					fmt.Fprintf(os.Stderr, "Could not get IPs: %v\n", err)
+					os.Exit(1)
+				}
+				else {
+					for _, ip := range ips {
+						fmt.Printf("%s IP: %s\n", domain, ip.String())
+						ip_link = strings.ReplaceAll(link, domain, ip.String())
+						result = append(result, ip_link)
+					}
+				}
+				
 				ct := s.getClientTraffics(inbound.ClientStats, client.Email)
 				clientTraffics = append(clientTraffics, ct)
 				if ct.LastOnline > lastOnline {
