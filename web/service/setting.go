@@ -291,7 +291,8 @@ func (s *SettingService) SetListen(ip string) error {
 }
 
 func (s *SettingService) GetWebDomain() (string, error) {
-	return s.getString("webDomain")
+	//return s.getString("webDomain")
+	return s.getString("subDomain") // webDomain
 }
 
 func (s *SettingService) GetTgBotToken() (string, error) {
