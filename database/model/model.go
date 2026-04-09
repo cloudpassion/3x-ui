@@ -47,6 +47,7 @@ type Inbound struct {
 
 	// Xray configuration fields
 	Listen         string   `json:"listen" form:"listen"`
+	SubHost		   string 	`json:"subhost" form:"subhost"`
 	Port           int      `json:"port" form:"port"`
 	Protocol       Protocol `json:"protocol" form:"protocol"`
 	Settings       string   `json:"settings" form:"settings"`
@@ -88,6 +89,7 @@ func (i *Inbound) GenXrayInboundConfig() *xray.InboundConfig {
 	listen = fmt.Sprintf("\"%v\"", listen)
 	return &xray.InboundConfig{
 		Listen:         json_util.RawMessage(listen),
+		SubHost:		string(i.SubHost),
 		Port:           i.Port,
 		Protocol:       string(i.Protocol),
 		Settings:       json_util.RawMessage(i.Settings),
